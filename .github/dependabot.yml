@@ -1,0 +1,42 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    # Every weekday
+    schedule:
+      interval: "daily"
+  
+  - package-ecosystem: "docker"
+    directory: "4.company-research/.devcontainer"
+    # Every weekday
+    schedule:
+      interval: "daily"
+      update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      
+  - package-ecosystem: "docker"
+    directory: "2.recipe-adviser/​app"
+    # Every weekday
+    schedule:
+      interval: "daily"
+      update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      
+  - package-ecosystem: "composer"
+    directory: "2.recipe-adviser/​app"
+    # Every weekday
+    schedule:
+      interval: "daily"
+      update-types: ["version-update:semver-major", "version-update:semver-minor"]
+  
+  # Enable version updates for Python/Pip - Production
+  - package-ecosystem: "pip"
+    # Look for a `requirements.txt` in the `root` directory
+    # also 'setup.cfg', 'runtime.txt' and 'requirements/*.txt'
+    directory: "/"
+    # Every weekday
+    schedule:
+      interval: "daily"
