@@ -1,36 +1,38 @@
 # Chat+社内文書検索
 
 ## 概要
-このデモは、ChatGPT ライクなインターフェースを使用して企業の社内文書を検索するアプリケーションの実装パターンです。デモアプリを利用するためには、Azure Open AI の ChatGPT(gpt-35-turbo) モデルと、Azure Cognitive Search、他にいくつかのリソースの作成が必要です。
+このデモは、ChatGPT ライクなインターフェースを使用して企業の社内文書を検索するアプリケーションの実装パターンです。デモアプリを利用するためには、Azure Open AI の ChatGPT(gpt-35-turbo) モデルと、Azure AI Search、他にいくつかのリソースの作成が必要です。
 
 このリポジトリでは、サンプルデータに[厚生労働省のモデル就業規則](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/zigyonushi/model/index.html)を使用しています。
 
 デモアプリは以下のように動作します。
 
-## Architecture
+### Architecture
 ![RAG Architecture](assets/appcomponents.png)
 
-## UI
+### UI
 ![Chat screen](assets/chatscreen.png)
 
-## セットアップガイド
-
-> **重要:** このサンプルをデプロイするには、**Azure Open AI サービスが有効になっているサブスクリプションが必要です**。Azure Open AI サービスへのアクセス申請は[こちら](https://aka.ms/oaiapply)から行ってください。
-
-### 事前準備
-
-#### クラウド実行環境
+### クラウド実行環境
 このデモをデプロイすると以下のリソースが Azure サブスクリプション上に作成されます。
 | サービス名 | SKU | Note |
 | --- | --- | --- |
 |Azure App Service|S1||
 |Azure OpenAI Service|S0|gpt-3.5-turbo gpt-3.5-turbo-16k|
-|Azure Cognitive Search|S1||
+|Azure AI Search|S1||
 |Azure Cosmos DB|プロビジョニング済みスループット||
 |Azure Form Recognizer|S0||
 |Azure Blob Storage|汎用v2|ZRS|
 |Azure Application Insights||ワークスペース　ベース|
 |Azure Log Analytics|||
+
+## セットアップガイド
+### 事前準備
+**重要:** このサンプルをデプロイするには、
+- **Azureサブスクリプション**: Azure Open AI サービスが有効になっているサブスクリプションが必要です。Azure Open AI サービスへのアクセス申請は[こちら](https://aka.ms/oaiapply)から行ってください。
+- **Azure権限**: 
+  - Microsoft.Authorization/roleAssignments/write 権限が必要です。例えば、[Role Based Access Control Administrator](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#role-based-access-control-administrator-preview)、 [User Access Administrator](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)、 または [Owner](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#owner)のような権限が必要です。
+  - Azure アカウントにはサブスクリプションレベルで Microsoft.Resources/deployments/write 権限も必要です。例えば、[Contributor](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)、または [Owner](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#owner)のような権限が必要です。
 
 #### ローカル開発環境
 このデモをデプロイするためには、ローカルに以下の開発環境が必要です。
